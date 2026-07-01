@@ -36,7 +36,6 @@ class HeroViewModel: ObservableObject {
         isLoading = true
         
         do {
-            // 1. API'den Çek
             let url = URL(string: "https://akabab.github.io/superhero-api/api/all.json")!
             let (data, _) = try await URLSession.shared.data(from: url)
             apiHeroes = try JSONDecoder().decode([SuperHero].self, from: data)

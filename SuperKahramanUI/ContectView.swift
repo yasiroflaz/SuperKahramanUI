@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ContectView: View {
+    @EnvironmentObject var authVM: AuthViewModel
     @StateObject var viewModel = HeroViewModel()
     @State private var showingAddSheet = false
     
@@ -49,6 +50,16 @@ struct ContectView: View {
                             }
                         }
                         .padding()
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button {
+                                    authVM.logout()
+                                } label: {
+                                    Image(systemName: "rectangle.portrait.and.arrow.right")
+                                        .foregroundColor(.red)
+                                }
+                            }
+                        }
                     }
                 }
             }

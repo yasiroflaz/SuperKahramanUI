@@ -1,24 +1,29 @@
-//
-//  SuperKahramanUIApp.swift
-//  SuperKahramanUI
-//
-//  Created by Yasir OFLAZ on 1.07.2026.
-//
-
-
 import SwiftUI
-import FirebaseCore
+import Firebase
 
 @main
 struct SuperKahramanUIApp: App {
+  
+    @StateObject var authVM = AuthViewModel()
+    
     init() {
         FirebaseApp.configure()
     }
     
     var body: some Scene {
         WindowGroup {
-            
-            ContectView()
+            Group {
+                if authVM.userSession != nil {
+                   
+                    NavigationStack {
+                        ContectView()
+                    }
+                } else {
+                    
+                    LoginView()
+                }
+            }
+            .environmentObject(authVM)
         }
     }
 }

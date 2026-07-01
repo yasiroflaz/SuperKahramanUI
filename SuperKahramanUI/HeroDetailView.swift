@@ -1,5 +1,5 @@
 import SwiftUI
-import MapKit // 1. Harita için bunu ekledik
+import MapKit 
 
 struct HeroDetailView: View {
     let hero: SuperHero
